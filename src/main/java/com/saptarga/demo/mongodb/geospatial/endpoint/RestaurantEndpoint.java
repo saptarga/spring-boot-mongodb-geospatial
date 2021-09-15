@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.Distance;
+import org.springframework.data.geo.GeoResults;
 import org.springframework.data.geo.Metrics;
 import org.springframework.data.geo.Point;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
@@ -37,9 +38,9 @@ public class RestaurantEndpoint {
     }
 
     @GetMapping("/restaurant/nearby")
-    public ResponseEntity<List<Restaurant>> getRestaurantNearby(@RequestParam("latitude") double latitude,
-                                                @RequestParam("longitude") double longitude,
-                                                @RequestParam("distance") double distance){
+    public ResponseEntity<GeoResults<Restaurant>> getRestaurantNearby(@RequestParam("latitude") double latitude,
+                                                                      @RequestParam("longitude") double longitude,
+                                                                      @RequestParam("distance") double distance){
         Point point = new Point(longitude, latitude);
         Distance distanceOnKm = new Distance(distance, Metrics.KILOMETERS);
 
