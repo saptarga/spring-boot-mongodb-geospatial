@@ -50,7 +50,7 @@ Content-Length: 312
 ```
 
 ### Request Get Restaurant Nearby Location
-```
+```http
 GET /restaurant/nearby?latitude=-6.907329&longitude=107.603198&distance=5 HTTP/1.1
 Host: localhost:8080
 ```
